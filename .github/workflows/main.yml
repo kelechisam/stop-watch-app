@@ -36,4 +36,8 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.PRIVATE_KEY }}
         script: |
-          sh start.sh
+         cd stop-watch-app
+         git pull origin
+         cd
+         sudo cp -r stop-watch-app/* /var/www/html
+         sudo systemctl restart nginx
